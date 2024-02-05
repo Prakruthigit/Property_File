@@ -1,4 +1,4 @@
-def runPipeline() {
+def runPipeline(propertiesMap, propertiesMap2) {
     echo "Value of key1: ${propertiesMap['Monday']}"
     echo "Value of key1: ${propertiesMap2['Monday']}"
 }
@@ -52,7 +52,7 @@ pipeline {
                         // Add to properties map
                         propertiesMap2[key2] = value2
                     }
-                    runPipeline()
+                    runPipeline(propertiesMap, propertiesMap2)
                 }
             }
         }
