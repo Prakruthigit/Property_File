@@ -4,6 +4,7 @@ def readFileContent(filePath) {
     } catch (Exception e) {
         error "Failed to read file: ${filePath}, error: ${e.message}"
     }
+}
 
 pipeline {
     agent any
