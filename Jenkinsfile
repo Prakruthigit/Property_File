@@ -6,6 +6,7 @@ pipeline {
             steps {
                 script {
                     def propertiesMap = [:]
+                    def propertiesMap2 = [:]
                     def configFile
                     def configFile2
 
