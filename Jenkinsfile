@@ -1,12 +1,9 @@
-// Jenkinsfile
-
 def readFileContent(filePath) {
     try {
         return readFile(filePath).trim()
     } catch (Exception e) {
         error "Failed to read file: ${filePath}, error: ${e.message}"
     }
-}
 
 pipeline {
     agent any
