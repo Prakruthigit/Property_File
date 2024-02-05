@@ -7,6 +7,7 @@ pipeline {
                 script {
                     def propertiesMap = [:]
                     def configFile
+                    def configFile2
 
                     if (BRANCH_NAME == 'develop') {
                         configFile = 'pipeline-properties/dev.properties'
@@ -26,22 +27,26 @@ pipeline {
                         // Split each line into key and value
                         def (key, value) = line.split('=')
 
-                    // Split lines and iterate through them
+                        // Trim whitespaces
+                        key = key.trim()
+                        value = value.trim()
+
+                        // Add to properties map
+                        propertiesMap[key] = value
+                    }
+
                     fileContent2.eachLine { line ->
                         // Split each line into key and value
                         def (key2, value2) = line.split('=')
 
                         // Trim whitespaces
-                        key = key.trim()
-                        value = value.trim()
-                        // Trim whitespaces
                         key2 = key2.trim()
                         value2 = value2.trim()
 
                         // Add to properties map
-                        propertiesMap[key] = value
-                         propertiesMap2[key2] = value2
+                        propertiesMap2[key2] = value2
                     }
+                    
 
                     // Now propertiesMap contains the key-value pairs
                     echo "Value of key1: ${propertiesMap['Monday']}"
@@ -51,3 +56,4 @@ pipeline {
         }
     }
 }
+              
