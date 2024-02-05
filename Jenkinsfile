@@ -2,23 +2,32 @@ pipeline {
     agent any
 
     stages {
-        stage('Read Properties File') {
+        stage('Read Properties') {
             steps {
                 script {
-                    // Specify the path to the properties file
-                    def propertiesFilePath = 'pieline-propperties/dev.groovy'
+                    def configFile = 'pipeline-properties/dev.properties'
+                    def propertiesMap = [:]
 
-                    // Use ConfigSlurper to parse the properties file
-                    def configSlurper = new ConfigSlurper().parse(new File(propertiesFilePath).toURL())
+                    // Read the file content
+                    def fileContent = readFile(file: configFile).trim()
 
-                    // Access and print specific key-value pairs
-                    echo "Value for Key 'username': ${configSlurper.Monday}"
-                    echo "Value for Key 'password': ${configSlurper.Tuesday}"
+                    // Split lines and iterate through them
+                    fileContent.eachLine { line ->
+                        // Split each line into key and value
+                        def (key, value) = line.split('=')
+
+                        // Trim whitespaces
+                        key = key.trim()
+                        value = value.trim()
+
+                        // Add to properties map
+                        propertiesMap[key] = value
+                    }
+
+                    // Now propertiesMap contains the key-value pairs
+                    echo "Value of key1: ${propertiesMap['Monday']}"
                 }
             }
         }
     }
 }
-
-    
-
