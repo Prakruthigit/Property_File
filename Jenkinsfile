@@ -33,7 +33,7 @@ pipeline {
                     }
 
                     // Now propertiesMap contains the key-value pairs
-                    echo "Value of key1: ${propertiesMap['branch_name']}"
+                    echo "Value of key1: ${propertiesMap['Monday']}"
                 }
             }
         }
