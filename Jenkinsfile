@@ -26,9 +26,4 @@ pipeline {
                 }
             }
         }
-        
-        // Add more stages as needed
-    }
-    
-    // Post-build actions, etc.
 }
