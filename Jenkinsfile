@@ -9,9 +9,9 @@ pipeline {
                     def configFile
 
                     if (BRANCH_NAME == 'develop') {
-                        configFile = 'path/to/dev.properties'
+                        configFile = 'pipeline-properties/dev.properties'
                     } else if (BRANCH_NAME == 'qa') {
-                        configFile = 'path/to/qa.properties'
+                        configFile = 'pipeline-properties/qa.properties'
                     } else {
                         error "Unsupported branch: ${BRANCH_NAME}"
                     }
