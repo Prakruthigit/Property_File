@@ -1,3 +1,8 @@
+def runPipeline() {
+    echo "Value of key1: ${propertiesMap['Monday']}"
+    echo "Value of key1: ${propertiesMap2['Monday']}"
+}
+
 pipeline {
     agent any
 
@@ -47,11 +52,7 @@ pipeline {
                         // Add to properties map
                         propertiesMap2[key2] = value2
                     }
-                    
-
-                    // Now propertiesMap contains the key-value pairs
-                    echo "Value of key1: ${propertiesMap['Monday']}"
-                    echo "Value of key1: ${propertiesMap2['Monday']}"
+                    runPipeline()
                 }
             }
         }
