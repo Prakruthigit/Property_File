@@ -21,6 +21,7 @@ pipeline {
                     
                     // Print the content or use it as needed
                     echo "File Content: ${fileContent}"
+                    echo "The day is $fileContent['Branch_name']}"
                 }
             }
         }
