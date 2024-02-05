@@ -5,12 +5,7 @@ pipeline {
         stage('Read Properties') {
             steps {
                 script {
-                    if(BRANCH_NAME == 'develop'){
-                        def configFile = 'pipeline-properties/dev.properties'
-                    }
-                    else if (BRANCH_NAME == 'qa'){
-                        def configFile = 'pipeline-properties/qa.properties'
-                    }
+                    def configFile = 'pipeline-properties/dev.properties'
                     def propertiesMap = [:]
 
                     // Read the file content
