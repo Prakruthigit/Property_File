@@ -6,7 +6,7 @@ def configFile2
 def runPipeline(propertiesMap) {
     echo "Value of key1: ${propertiesMap['Monday']}"
 }
-def runPipeline(propertiesMap2) {
+def runPipeline2(propertiesMap2) {
     echo "Value of key1: ${propertiesMap2['Monday']}"
 }
 
