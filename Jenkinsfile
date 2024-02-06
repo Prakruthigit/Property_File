@@ -50,6 +50,13 @@ pipeline {
                         // Add to properties map
                         propertiesMap2[key2] = value2
                     } 
+                }
+            }
+        }
+
+        stage('Pass Property'){
+            steps{
+                script{ 
                     runPipeline(propertiesMap, propertiesMap2)
                 }
             }
