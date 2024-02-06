@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Define a shell command to read the property file
-                    def command = "pipeline-properties/dev.properties"
+                    def command = "cat pipeline-properties/dev.properties"
                     
                     // Execute the shell command
                     def fileContent = sh(script: command, returnStdout: true).trim()
