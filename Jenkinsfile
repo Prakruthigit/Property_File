@@ -5,16 +5,16 @@ def runPipeline(propertiesMap, propertiesMap2) {
 
 pipeline {
     agent any
-
+    environment{
+          def propertiesMap = [:]
+          def propertiesMap2 = [:]
+          def configFile
+          def configFile2
+    }
     stages {
         stage('Read Properties') {
             steps {
                 script {
-                    def propertiesMap = [:]
-                    def propertiesMap2 = [:]
-                    def configFile
-                    def configFile2
-
                     if (BRANCH_NAME == 'develop') {
                         configFile = 'pipeline-properties/dev.properties'
                         configFile2 = 'pipeline-properties/dev2.properties'
