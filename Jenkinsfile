@@ -2,15 +2,13 @@ def runPipeline(propertiesMap, propertiesMap2) {
     echo "Value of key1: ${propertiesMap['Monday']}"
     echo "Value of key1: ${propertiesMap2['Monday']}"
 }
+def propertiesMap = [:]
+def propertiesMap2 = [:]
+def configFile
+def configFile2
 
 pipeline {
     agent any
-    environment{
-          def propertiesMap = [:]
-          def propertiesMap2 = [:]
-          def configFile
-          def configFile2
-    }
     stages {
         stage('Read Properties') {
             steps {
