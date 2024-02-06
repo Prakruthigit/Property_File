@@ -3,8 +3,10 @@ def propertiesMap2 = [:]
 def configFile
 def configFile2
 
-def runPipeline(propertiesMap, propertiesMap2) {
+def runPipeline(propertiesMap) {
     echo "Value of key1: ${propertiesMap['Monday']}"
+}
+def runPipeline(propertiesMap2) {
     echo "Value of key1: ${propertiesMap2['Monday']}"
 }
 
@@ -58,7 +60,8 @@ pipeline {
         stage('Pass Property'){
             steps{
                 script{ 
-                    runPipeline(propertiesMap, propertiesMap2)
+                    runPipeline(propertiesMap)
+                    runPipeline2(propertiesMap2)
                 }
             }
         }
