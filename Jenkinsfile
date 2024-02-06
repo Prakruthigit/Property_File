@@ -2,21 +2,27 @@ pipeline {
     agent any
 
     stages {
-        stage('Read Key-Value Pairs') {
+        stage('Read Property File') {
             steps {
                 script {
-                    def branchName = env.BRANCH_NAME // Assuming you have the branch name available in env
-                    def keyValues = [:]
-                    def fileContent = sh(returnStdout: true, script: "git show ${branchName}:pipeline-properties/dev.properties")
+                    // Define a shell command to read the property file
+                    def command = "pipeline-properties/dev.properties"
                     
-                    // Parse the file content to extract key-value pairs
+                    // Execute the shell command
+                    def fileContent = sh(script: command, returnStdout: true).trim()
+                    
+                    // Split file content by newline and parse key-value pairs
+                    def keyValues = [:]
                     fileContent.split('\n').each { line ->
-                        def (key, value) = line.split('=')
+                        def (key, value) = line.tokenize('=')
                         keyValues[key.trim()] = value.trim()
                     }
-
-                    // Now you have key-value pairs in keyValues map
-                    echo "Key-Value pairs: ${keyValues}"
+                    
+                    // Accessing properties
+                    //def key1 = keyValues['key1']
+                    //def key2 = keyValues['key2']
+                    
+                    echo "Value of key1: ${keyValues['Monday']}"
                 }
             }
         }
