@@ -5,7 +5,7 @@ pipeline {
       steps {
         script{
            def Config = load('pipeline-properties/dev.groovy')
-           echo "$Config.name"
+           echo "${Config['name']}"
         }
       }
     }
