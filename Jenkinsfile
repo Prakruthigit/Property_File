@@ -1,13 +1,11 @@
-@Library("Shared_lib") _
-
 pipeline {
   agent any 
   stages {
     stage('Example') {
       steps {
         script{
-           properties = readProperties file: 'pipeline-properties/dev.properties'   
-           echo "${property['Monday']}"
+           def Config = load('pipeline-properties/dev.groovy')
+           echo "$Config.name"
         }
       }
     }
