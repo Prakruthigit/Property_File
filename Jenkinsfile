@@ -13,7 +13,7 @@ pipeline {
                 script{
                      if(BRANCH_NAME == 'develop'){
                           // Access dev config 
-                          echo "property.dev.name"
+                          echo "$property.dev.name"
                      }
                 }
             }
