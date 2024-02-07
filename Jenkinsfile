@@ -13,8 +13,7 @@ pipeline {
                 script{
                      if(BRANCH_NAME == 'develop'){
                           // Access dev config 
-                         def Config = load 'property/dev.groovy'
-                         echo "${Config.name}"
+                         lambda1.echoCommand()
                      }
                 }
             }
