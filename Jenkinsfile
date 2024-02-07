@@ -1,12 +1,20 @@
+// Jenkinsfile
+
+def config = readProperties file: 'config.properties'
 pipeline {
-  agent any 
+
+  agent any
+
+  environment { 
+    ENV = config.environment
+    API_URL = config.api_url 
+  }
+
   stages {
     stage('Example') {
       steps {
-        script{
-           def Config = load('pipeline-properties/dev.groovy')
-           echo "${Config['name']}"
-        }
+        sh 'echo $ENV'
+        sh 'echo $API_URL' 
       }
     }
   }
