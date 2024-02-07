@@ -1,7 +1,7 @@
 @Library("Shared_lib") _
 
-def runPipeline(){
-     echo "$name"
+def runPipeline(devConfig){
+     echo "dev.name"
 }
 pipeline {
     agent any
@@ -14,7 +14,7 @@ pipeline {
                      if(BRANCH_NAME == 'develop'){
                           // Access dev config 
                          def devConfig = load "property/dev.groovy"
-                         runPipeline() 
+                         runPipeline(devConfig) 
                      }
                 }
             }
