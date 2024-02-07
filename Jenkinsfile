@@ -12,9 +12,8 @@ pipeline {
             steps{
                 script{
                      if(BRANCH_NAME == 'develop'){
-                          println "Resolved Path : ${this.vars + '/property/dev.groovy'}"
                           // Access dev config 
-                         def props = load('config/dev.groovy')
+                         def props = load('/config/dev.groovy')
                           echo "${props.name}"
                      }
                 }
