@@ -1,3 +1,7 @@
+def runPipeline(keyValues){
+     echo "Value of key1: ${keyValues['Monday']}"
+}
+
 pipeline {
     agent any
 
@@ -5,8 +9,10 @@ pipeline {
         stage('Read Property File') {
             steps {
                 script {
-                    // Define a shell command to read the property file
+                    if (BRANCH_NAME == 'develop'){
+                        // Define a shell command to read the property file
                     def command = "cat pipeline-properties/dev.properties"
+                    }
                     
                     // Execute the shell command
                     def fileContent = sh(script: command, returnStdout: true).trim()
@@ -21,8 +27,15 @@ pipeline {
                     // Accessing properties
                     //def key1 = keyValues['key1']
                     //def key2 = keyValues['key2']
-                    
-                    echo "Value of key1: ${keyValues['Monday']}"
+                   
+                }
+            }
+        }
+
+        stage('Pass property'){
+            steps{
+                script{
+                    runPipeline(keyValues)
                 }
             }
         }
