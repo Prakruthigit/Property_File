@@ -6,8 +6,8 @@ pipeline {
   agent any
 
   environment { 
-    ENV = config.environment
-    API_URL = config.api_url 
+    ENV = 'config.environment'
+    API_URL = 'config.api_url' 
   }
 
   stages {
